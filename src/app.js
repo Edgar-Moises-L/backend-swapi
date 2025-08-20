@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import filmRoute from './routes/filmRoute.js'
 import characterRoute from './routes/characterRoute.js'
+import planetRoute from './routes/planetRoute.js'
 import express from 'express';
 import dbClient from './config/dbClient.js'
 
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/films', filmRoute);
 app.use('/api/characters', characterRoute);
+app.use('/api/planets', planetRoute);
 
 try {
     const PORT = process.env.PORT || 3000;
