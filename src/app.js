@@ -3,7 +3,8 @@ import filmRoute from './routes/filmRoute.js'
 import characterRoute from './routes/characterRoute.js'
 import planetRoute from './routes/planetRoute.js'
 import speciesRoute from './routes/speciesRoute.js'
-import StarshipRoute from './routes/starshipRoute.js';
+import starshipRoute from './routes/starshipRoute.js';
+import vehicleRoute from './routes/vehicleRoute.js'
 import express from 'express';
 import dbClient from './config/dbClient.js'
 
@@ -17,7 +18,8 @@ app.use('/api/films', filmRoute);
 app.use('/api/characters', characterRoute);
 app.use('/api/planets', planetRoute);
 app.use('/api/species', speciesRoute)
-app.use('/api/starships', StarshipRoute)
+app.use('/api/starships', starshipRoute)
+app.use('/api/vehicles', vehicleRoute)
 
 try {
     const PORT = process.env.PORT || 3000;
