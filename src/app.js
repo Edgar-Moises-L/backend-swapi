@@ -1,0 +1,24 @@
+import 'dotenv/config';
+import filmRoute from './routes/filmRoute.js'
+import express from 'express';
+import dbClient from './config/dbClient.js'
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+app.use('/api/film', filmRoute);
+
+try {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log('Servidor activo en el puerto ' + PORT));
+} catch (e) {
+    console.log(e);
+}
+
+process.on('SIGINT', async () => {
+    dbClient.closeConexion();
+    process.exit(0);
+})
