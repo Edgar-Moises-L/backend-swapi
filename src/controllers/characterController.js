@@ -41,13 +41,19 @@ class characterController {
         }
     }
 
-    async delete(req, res) {
+ async delete(req, res) {
         try {
             const { id } = req.params;
-            const data = await characterService.delete(id);
-            res.status(200).json({ data });
+            const deletedCharacter = await characterService.delete(id);
+
+            if (!deletedCharacter) {
+                return res.status(404).json({ message: "Personaje no encontrado" });
+            }
+
+            return res.status(200).json({ message: "Registro eliminado correctamente" });
+
         } catch (e) {
-            res.status(500).send(e);
+            return res.status(500).json({ error: e.message });
         }
     }
 

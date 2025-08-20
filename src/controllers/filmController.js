@@ -41,13 +41,19 @@ class filmController {
         }
     }
 
-    async delete(req, res) {
+ async delete(req, res) {
         try {
             const { id } = req.params;
-            const data = await filmService.delete(id);
-            res.status(200).json({ data });
+            const deletedFilm = await filmService.delete(id);
+
+            if (!deletedFilm) {
+                return res.status(404).json({ message: "Pelicula no encontrada" });
+            }
+
+            return res.status(200).json({ message: "Registro eliminado correctamente" });
+
         } catch (e) {
-            res.status(500).send(e);
+            return res.status(500).json({ error: e.message });
         }
     }
 

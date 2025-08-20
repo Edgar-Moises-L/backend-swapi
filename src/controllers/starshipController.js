@@ -41,15 +41,21 @@ class starshipController{
          }
      }
  
-     async delete(req, res) {
-         try {
-             const { id } = req.params;
-             const data = await starshipService.delete(id);
-             res.status(200).json({ data });
-         } catch (e) {
-             res.status(500).send(e);
-         }
-     }
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            const deletedStarship = await starshipService.delete(id);
+
+            if (!deletedStarship) {
+                return res.status(404).json({ message: "Nave espacial no encontrada" });
+            }
+
+            return res.status(200).json({ message: "Registro eliminado correctamente" });
+
+        } catch (e) {
+            return res.status(500).json({ error: e.message });
+        }
+    }
  
 }
 export default new starshipController();

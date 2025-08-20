@@ -51,5 +51,22 @@ class planetController {
         }
     }
 
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            const deletedPlanet = await planetService.delete(id);
+
+            if (!deletedPlanet) {
+                return res.status(404).json({ message: "Planeta no encontrado" });
+            }
+
+            return res.status(200).json({ message: "Registro eliminado correctamente" });
+
+        } catch (e) {
+            return res.status(500).json({ error: e.message });
+        }
+    }
+
+
 }
 export default new planetController();
