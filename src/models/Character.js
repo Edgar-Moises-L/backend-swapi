@@ -1,0 +1,19 @@
+import { Schema, model } from "mongoose";
+
+const characterSchema = new Schema({
+    name: { type: String, required: true },
+    birth_year: { type: String },
+    eye_color: { type: String },
+    gender: { type: String },
+    hair_color: { type: String },
+    height: { type: Number },
+    mass: { type: Number },
+    skin_color: { type: String },
+    films: { type: String }, //falta relacionar
+    homeworld: { type: String }, //falta relacionar
+    species: { type: String }, //falta relacionar
+    starships: { type: String }, //falta relacionar
+    vehicles: { type: String } //falta relacionar
+}, { timestamps: true });
+
+export default model('Character', characterSchema);

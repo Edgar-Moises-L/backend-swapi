@@ -9,4 +9,4 @@ const filmSchema = new Schema(
     }, { timestamps: true }
 )
 
-export default model('Film', filmSchema)
+export default model('Film', filmSchema);

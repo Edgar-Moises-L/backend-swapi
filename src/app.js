@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/api/film', filmRoute);
+app.use('/api/films', filmRoute);
 
 try {
     const PORT = process.env.PORT || 3000;
