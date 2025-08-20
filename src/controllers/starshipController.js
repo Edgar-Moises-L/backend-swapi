@@ -1,11 +1,11 @@
-import speciesService from '../services/speciesService.js'
+import starshipService from '../services/starshipServices.js'
 
-class speciesController{
+class starshipController{
     construct(){}
 
     async create(req,res){
         try{
-            const data = await speciesService.create(req.body);
+            const data = await starshipService.create(req.body);
             res.status(200).json({data});
         }catch(e){
             res.status(500).send(e);
@@ -14,7 +14,7 @@ class speciesController{
 
         async getAll(req,res){
         try{
-            const data = await speciesService.getAll();
+            const data = await starshipService.getAll();
             res.status(200).json({data});
         }catch(e){
             res.status(500).send(e);
@@ -24,7 +24,7 @@ class speciesController{
  async getById(req, res) {
          try {
              const { id } = req.params;
-             const data = await speciesService.getById(id);
+             const data = await starshipService.getById(id);
              res.status(200).json({ data });
          } catch (e) {
              res.status(500).send(e);
@@ -34,7 +34,7 @@ class speciesController{
      async update(req, res) {
          try {
              const { id } = req.params;
-             const data = await speciesService.update(id, req.body);
+             const data = await starshipService.update(id, req.body);
              res.status(200).json({ data });
          } catch (e) {
              res.status(500).send(e);
@@ -44,7 +44,7 @@ class speciesController{
      async delete(req, res) {
          try {
              const { id } = req.params;
-             const data = await speciesService.delete(id);
+             const data = await starshipService.delete(id);
              res.status(200).json({ data });
          } catch (e) {
              res.status(500).send(e);
@@ -52,4 +52,4 @@ class speciesController{
      }
  
 }
-export default new speciesController();
+export default new starshipController();
