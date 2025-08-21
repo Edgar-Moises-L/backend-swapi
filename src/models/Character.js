@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
 const characterSchema = new Schema({
-    name: { type: String, required: true, unique: true},
+    name: { type: String, required: true ,unique: true},
     birth_year: { type: String },
     eye_color: { type: String },
     gender: { type: String },
