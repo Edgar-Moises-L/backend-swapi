@@ -22,6 +22,28 @@ class characterController {
         }
     }
 
+    async getByName(req, res) {
+        try {
+            const { name } = req.params; 
+            if (!name) {
+                return res.status(400).json({ message: "Se requiere el parámetro 'name'" });
+            }
+
+            const characters = await characterService.getByName(name);
+            
+            if (!characters.length) {
+                return res.status(404).json({ message: "No se encontraron personajes" });
+            }
+
+            return res.json(characters);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Error al buscar personajes" });
+        }
+    }
+
+
+
     async getById(req, res) {
         try {
             const { id } = req.params;
