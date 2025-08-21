@@ -5,21 +5,25 @@ class planetService {
         return await Planet.create(planet);
     }
 
-    async getAll(page = 1, limit =10) {
+    async getAll(page = 1, limit = 10) {
         const options = {
             page,
             limit,
             select: "-createdAt -updatedAt -__v"
         }
-        return await Planet.paginate({},options);
+        return await Planet.paginate({}, options);
+    }
+
+    async getListForCharacter() {
+        return await Planet.find({}, "name");
     }
 
     async getById(id) {
         return await Planet.findById(id).select("-createdAt -updatedAt -__v");
     }
 
-    async update(id,planet) {
-        return await Planet.findByIdAndUpdate(id, planet, {new: true});
+    async update(id, planet) {
+        return await Planet.findByIdAndUpdate(id, planet, { new: true });
     }
 
     async delete(id) {

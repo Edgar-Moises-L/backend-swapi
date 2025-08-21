@@ -6,12 +6,16 @@ class vehicleService {
     }
 
     async getAll(page = 1, limit = 10) {
-         const options = {
+        const options = {
             page,
             limit,
             select: "-createdAt -updatedAt -__v"
         };
         return await Vehicle.find().paginate({}, options);
+    }
+
+    async getListForCharacter() {
+        return await Vehicle.find({}, "name");
     }
 
     async getById(id) {

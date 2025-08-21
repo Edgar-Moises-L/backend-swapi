@@ -22,6 +22,16 @@ class filmController {
         }
     }
 
+    async getListForCharacter(req, res) {
+        try {
+            const data = await filmService.getListForCharacter();
+            res.status(200).json({ data });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
+
+
     async getById(req, res) {
         try {
             const { id } = req.params;
@@ -42,7 +52,7 @@ class filmController {
         }
     }
 
- async delete(req, res) {
+    async delete(req, res) {
         try {
             const { id } = req.params;
             const deletedFilm = await filmService.delete(id);

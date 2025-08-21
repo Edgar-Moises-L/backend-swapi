@@ -5,6 +5,7 @@ const route = Router();
 
 route.post('/', filmController.create);
 route.get('/', filmController.getAll);
+route.get('/list/for-character', filmController.getListForCharacter);
 route.get('/:id', filmController.getById);
 route.put('/:id', filmController.update);
 route.delete('/:id', filmController.delete);

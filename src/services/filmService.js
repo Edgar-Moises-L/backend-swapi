@@ -14,6 +14,10 @@ class filmService {
         return await Film.paginate({}, options);
     }
 
+    async getListForCharacter() {
+        return await Film.find({}, "title");
+    }
+
     async getById(id) {
         return await Film.findById(id).select("-createdAt -updatedAt -__v");
     }

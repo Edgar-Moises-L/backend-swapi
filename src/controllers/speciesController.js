@@ -22,6 +22,15 @@ class speciesController {
         }
     }
 
+    async getListForCharacter(req, res) {
+        try {
+            const data = await speciesService.getListForCharacter();
+            res.status(200).json({ data });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
+
     async getById(req, res) {
         try {
             const { id } = req.params;
