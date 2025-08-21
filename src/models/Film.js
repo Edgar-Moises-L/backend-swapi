@@ -4,7 +4,7 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 
 const filmSchema = new Schema(
     {
-        title: { type: String, required: true },
+        title: { type: String, required: true, unique: true },
         director: { type: String, required: true },
         producer: { type: String, required: true }
 

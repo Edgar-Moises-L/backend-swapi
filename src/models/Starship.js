@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
 const starshipSchema = new Schema({
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true},
     model: { type: String, required: true },
     starship_class: { type: String },
     length: { type: Number },

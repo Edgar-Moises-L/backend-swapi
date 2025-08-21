@@ -8,7 +8,7 @@ class characterController {
             const data = await characterService.create(req.body);
             res.status(201).json({ data });
         } catch (e) {
-            res.status(500).send(e);
+            res.status(500).send(e.message);
         }
     }
 
@@ -18,7 +18,7 @@ class characterController {
             const data = await characterService.getAll(Number(page), Number(limit));
             res.status(200).json({ data });
         } catch (e) {
-            res.status(500).send(e);
+            res.status(500).send(e.message);
         }
     }
 
@@ -50,7 +50,7 @@ class characterController {
             const data = await characterService.getById(id);
             res.status(200).json({ data });
         } catch (e) {
-            res.status(500).send(e);
+            res.status(500).send(e.message);
         }
     }
 
@@ -60,7 +60,7 @@ class characterController {
             const data = await characterService.update(id, req.body);
             res.status(200).json({ data });
         } catch (e) {
-            res.status(500).send(e);
+            res.status(500).send(e.message);
         }
     }
 

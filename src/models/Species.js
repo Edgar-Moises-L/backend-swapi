@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
 const speciesSchema = new Schema({
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
     classification: { type: String },
     designation: { type: String },
     average_height: { type: Number },
