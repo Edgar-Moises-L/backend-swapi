@@ -6,11 +6,11 @@ class vehicleService {
     }
 
     async getAll() {
-        return await Vehicle.find();
+        return await Vehicle.find().select("-createdAt -updatedAt -__v");
     }
 
     async getById(id) {
-        return await Vehicle.findById(id);
+        return await Vehicle.findById(id).select("-createdAt -updatedAt -__v");
     }
 
     async update(id, vehicle) {

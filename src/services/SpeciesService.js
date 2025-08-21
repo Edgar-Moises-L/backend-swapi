@@ -6,11 +6,11 @@ class speciesService {
     }
 
     async getAll() {
-        return await Species.find();
+        return await Species.find().select("-createdAt -updatedAt -__v");
     }
 
     async getById(id) {
-        return await Species.findById(id);
+        return await Species.findById(id).select("-createdAt -updatedAt -__v");
     }
 
     async update(id, species) {

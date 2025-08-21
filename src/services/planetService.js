@@ -6,11 +6,11 @@ class planetService {
     }
 
     async getAll() {
-        return await Planet.find();
+        return await Planet.find().select("-createdAt -updatedAt -__v");
     }
 
     async getById(id) {
-        return await Planet.findById(id);
+        return await Planet.findById(id).select("-createdAt -updatedAt -__v");
     }
 
     async update(id,planet) {

@@ -6,11 +6,11 @@ class filmService {
     }
 
     async getAll() {
-        return await Film.find();
+        return await Film.find().select("-createdAt -updatedAt -__v");
     }
 
     async getById(id) {
-        return await Film.findById(id);
+        return await Film.findById(id).select("-createdAt -updatedAt -__v");
     }
 
     async update(id,film) {

@@ -10,7 +10,7 @@ class characterService {
     }
 
     async getById(id) {
-        return await Character.findById(id);
+        return await Character.findById(id).select("-createdAt -updatedAt -__v");
     }
 
     async update(id,character) {

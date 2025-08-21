@@ -6,11 +6,11 @@ class starshipService {
     }
 
     async getAll() {
-        return await Starship.find();
+        return await Starship.find().select("-createdAt -updatedAt -__v");
     }
 
     async getById(id) {
-        return await Starship.findById(id);
+        return await Starship.findById(id).select("-createdAt -updatedAt -__v");
     }
 
     async update(id, starship) {
