@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const characterSchema = new Schema({
     name: { type: String, required: true },
@@ -15,5 +16,7 @@ const characterSchema = new Schema({
     starships: { type: String }, //falta relacionar
     vehicles: { type: String } //falta relacionar
 }, { timestamps: true });
+
+characterSchema.plugin(mongoosePaginate);
 
 export default model('Character', characterSchema);

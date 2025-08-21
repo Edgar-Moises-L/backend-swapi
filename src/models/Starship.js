@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const starshipSchema = new Schema({
     name: { type: String, required: true },
@@ -12,5 +13,7 @@ const starshipSchema = new Schema({
     cargo_capacity: { type: Number },
     consumables: { type: String }
 }, { timestamps: true });
+
+starshipSchema.plugin(mongoosePaginate);
 
 export default model('Starship', starshipSchema);

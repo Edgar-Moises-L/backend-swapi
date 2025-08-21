@@ -5,8 +5,13 @@ class vehicleService {
         return await Vehicle.create(vehicle);
     }
 
-    async getAll() {
-        return await Vehicle.find().select("-createdAt -updatedAt -__v");
+    async getAll(page = 1, limit = 10) {
+         const options = {
+            page,
+            limit,
+            select: "-createdAt -updatedAt -__v"
+        };
+        return await Vehicle.find().paginate({}, options);
     }
 
     async getById(id) {

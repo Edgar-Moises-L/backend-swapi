@@ -14,7 +14,8 @@ class planetController {
 
     async getAll(req, res) {
         try {
-            const data = await planetService.getAll();
+            const { page = 1, limit = 10 } = req.query;
+            const data = await planetService.getAll(Number(page), Number(limit));
             res.status(200).json({ data });
         } catch (e) {
             res.status(500).send(e);

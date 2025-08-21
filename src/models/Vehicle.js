@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const vehicleSchema = new Schema({
     name: { type: String, required: true },
@@ -10,5 +11,7 @@ const vehicleSchema = new Schema({
     cargo_capacity: { type: Number },
     consumables: { type: String }
 }, { timestamps: true });
+
+vehicleSchema.plugin(mongoosePaginate);
 
 export default model('Vehicle', vehicleSchema);

@@ -5,8 +5,13 @@ class speciesService {
         return await Species.create(species);
     }
 
-    async getAll() {
-        return await Species.find().select("-createdAt -updatedAt -__v");
+    async getAll(page =1 , limit =10) {
+        const options = {
+            page,
+            limit,
+            select: "-createdAt -updatedAt -__v"
+        }
+        return await Species.paginate({}, options);
     }
 
     async getById(id) {

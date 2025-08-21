@@ -14,7 +14,8 @@ class filmController {
 
     async getAll(req, res) {
         try {
-            const data = await filmService.getAll();
+            const { page = 1, limit = 10 } = req.query;
+            const data = await filmService.getAll(Number(page), Number(limit));
             res.status(200).json({ data });
         } catch (e) {
             res.status(500).send(e);

@@ -5,8 +5,13 @@ class planetService {
         return await Planet.create(planet);
     }
 
-    async getAll() {
-        return await Planet.find().select("-createdAt -updatedAt -__v");
+    async getAll(page = 1, limit =10) {
+        const options = {
+            page,
+            limit,
+            select: "-createdAt -updatedAt -__v"
+        }
+        return await Planet.paginate({},options);
     }
 
     async getById(id) {

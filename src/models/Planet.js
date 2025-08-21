@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const planetSchema = new Schema({
     name: { type: String, required: true },
@@ -12,5 +13,7 @@ const planetSchema = new Schema({
     climate: { type: String },
     terrain: { type: String }
 }, { timestamps: true });
+
+planetSchema.plugin(mongoosePaginate);
 
 export default model('Planet', planetSchema);

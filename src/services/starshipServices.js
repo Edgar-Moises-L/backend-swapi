@@ -5,8 +5,13 @@ class starshipService {
         return await Starship.create(starship);
     }
 
-    async getAll() {
-        return await Starship.find().select("-createdAt -updatedAt -__v");
+    async getAll(page = 1, limit=10) {
+             const options = {
+            page,
+            limit,
+            select: "-createdAt -updatedAt -__v"
+        };
+        return await Starship.paginate({}, options);
     }
 
     async getById(id) {
