@@ -8,7 +8,7 @@ class planetController {
             const data = await planetService.create(req.body);
             res.status(201).json({ data });
         } catch (e) {
-            res.status(500).send(e);
+            res.status(500).send(e.message);
         }
     }
 

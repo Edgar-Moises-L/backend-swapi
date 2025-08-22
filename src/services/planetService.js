@@ -1,16 +1,23 @@
-import Planet from '../models/Planet.js'
+import Planet from '../models/Planet.js';
 
-class planetService {
+const excludeFields = "-createdAt -updatedAt -__v";
+const filter = "residents";
+
+class PlanetService {
     async create(planet) {
-        return await Planet.create(planet);
+        const newPlanet = await Planet.create(planet);
+        return await Planet.findById(newPlanet._id)
+            .select(excludeFields)
+            .populate({ path: filter, select: excludeFields });
     }
 
     async getAll(page = 1, limit = 10) {
         const options = {
             page,
             limit,
-            select: "-createdAt -updatedAt -__v"
-        }
+            select: excludeFields,
+            populate: { path: filter, select: excludeFields }
+        };
         return await Planet.paginate({}, options);
     }
 
@@ -19,15 +26,20 @@ class planetService {
     }
 
     async getById(id) {
-        return await Planet.findById(id).select("-createdAt -updatedAt -__v");
+        return await Planet.findById(id)
+            .select(excludeFields)
+            .populate({ path: filter, select: excludeFields });
     }
 
     async update(id, planet) {
-        return await Planet.findByIdAndUpdate(id, planet, { new: true });
+        return await Planet.findByIdAndUpdate(id, planet, { new: true })
+            .select(excludeFields)
+            .populate({ path: filter, select: excludeFields });
     }
 
     async delete(id) {
-        return await Planet.findByIdAndDelete(id);
+        return await Planet.findByIdAndDelete(id).lean();
     }
 }
-export default new planetService();
+
+export default new PlanetService();
