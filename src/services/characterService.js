@@ -8,11 +8,11 @@ class CharacterService {
         return await Character.findById(newCharacter._id)
             .select(excludeFields)
             .populate([
-                { path: 'films', select: excludeFields },
-                { path: 'homeworld', select: excludeFields },
-                { path: 'species', select: excludeFields },
-                { path: 'starships', select: excludeFields },
-                { path: 'vehicles', select: excludeFields }
+                { path: 'films', select:  "title" },
+                { path: 'homeworld', select:  "name" },
+                { path: 'species', select:  "name" },
+                { path: 'starships', select:  "name" },
+                { path: 'vehicles', select:  "name" }
             ]);
     }
 
@@ -22,11 +22,11 @@ class CharacterService {
             limit,
             select: excludeFields,
             populate: [
-                { path: 'films', select: excludeFields },
-                { path: 'homeworld', select: excludeFields },
-                { path: 'species', select: excludeFields },
-                { path: 'starships', select: excludeFields },
-                { path: 'vehicles', select: excludeFields }
+                { path: 'films', select:  "title" },
+                { path: 'homeworld', select:  "name" },
+                { path: 'species', select:  "name" },
+                { path: 'starships', select:  "name" },
+                { path: 'vehicles', select:  "name" }
             ]
         };
         return await Character.paginate({}, options);
@@ -40,11 +40,11 @@ class CharacterService {
         return await Character.findById(id)
             .select(excludeFields)
             .populate([
-                { path: 'films', select: excludeFields },
-                { path: 'homeworld', select: excludeFields },
-                { path: 'species', select: excludeFields },
-                { path: 'starships', select: excludeFields },
-                { path: 'vehicles', select: excludeFields }
+                { path: 'films', select:  "title" },
+                { path: 'homeworld', select:  "name" },
+                { path: 'species', select:  "name" },
+                { path: 'starships', select:  "name" },
+                { path: 'vehicles', select:  "name" }
             ]);
     }
 
@@ -52,11 +52,11 @@ class CharacterService {
         return await Character.findByIdAndUpdate(id, character, { new: true })
             .select(excludeFields)
             .populate([
-                { path: 'films', select: excludeFields },
-                { path: 'homeworld', select: excludeFields },
-                { path: 'species', select: excludeFields },
-                { path: 'starships', select: excludeFields },
-                { path: 'vehicles', select: excludeFields }
+                { path: 'films', select:  "title" },
+                { path: 'homeworld', select:  "name" },
+                { path: 'species', select:  "name" },
+                { path: 'starships', select:  "name" },
+                { path: 'vehicles', select:  "name" }
             ]);
     }
 

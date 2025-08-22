@@ -11,8 +11,14 @@ class vehicleService {
             limit,
             select: "-createdAt -updatedAt -__v"
         };
-        return await Vehicle.find().paginate({}, options);
+
+        return await Vehicle.paginate({}, options);
+
     }
+
+
+
+
 
     async getListForCharacter() {
         return await Vehicle.find({}, "name");

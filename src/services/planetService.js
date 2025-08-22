@@ -8,7 +8,7 @@ class PlanetService {
         const newPlanet = await Planet.create(planet);
         return await Planet.findById(newPlanet._id)
             .select(excludeFields)
-            .populate({ path: filter, select: excludeFields });
+            .populate({ path: filter, select:  "name" });
     }
 
     async getAll(page = 1, limit = 10) {
@@ -16,7 +16,7 @@ class PlanetService {
             page,
             limit,
             select: excludeFields,
-            populate: { path: filter, select: excludeFields }
+            populate: { path: filter, select:  "name" }
         };
         return await Planet.paginate({}, options);
     }
@@ -28,13 +28,13 @@ class PlanetService {
     async getById(id) {
         return await Planet.findById(id)
             .select(excludeFields)
-            .populate({ path: filter, select: excludeFields });
+            .populate({ path: filter, select:  "name" });
     }
 
     async update(id, planet) {
         return await Planet.findByIdAndUpdate(id, planet, { new: true })
             .select(excludeFields)
-            .populate({ path: filter, select: excludeFields });
+            .populate({ path: filter, select:  "name" });
     }
 
     async delete(id) {

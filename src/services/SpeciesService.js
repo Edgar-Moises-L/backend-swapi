@@ -8,7 +8,7 @@ class SpeciesService {
         const newSpecies = await Species.create(species);
         return await Species.findById(newSpecies._id)
             .select(excludeFields)
-            .populate({ path: filter, select: excludeFields });
+            .populate({ path: filter, select: "name" });
     }
 
     async getAll(page = 1, limit = 10) {
@@ -16,7 +16,7 @@ class SpeciesService {
             page,
             limit,
             select: excludeFields,
-            populate: { path: filter, select: excludeFields }
+            populate: { path: filter, select: "name" }
         };
 
         return await Species.paginate({}, options);
@@ -30,13 +30,13 @@ class SpeciesService {
     async getById(id) {
         return await Species.findById(id)
             .select(excludeFields)
-            .populate({ path: filter, select: excludeFields });
+            .populate({ path: filter, select: "name" });
     }
 
     async update(id, species) {
         return await Species.findByIdAndUpdate(id, species, { new: true })
             .select(excludeFields)
-            .populate({ path: filter, select: excludeFields });
+            .populate({ path: filter, select: "name" });
     }
 
     async delete(id) {
@@ -45,3 +45,10 @@ class SpeciesService {
 }
 
 export default new SpeciesService();
+
+
+
+
+
+
+
