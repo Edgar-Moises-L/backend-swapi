@@ -7,6 +7,9 @@ Este es un backend desarrollado con Node.js, Express, MongoDB y Mongoose. Su fun
 
 La aplicación permite realizar operaciones completas de CRUD (Crear, Leer, Actualizar y Eliminar) sobre diferentes modelos, incluyendo Characters, Films, Planets, Species, Starships y Vehicles. Los usuarios pueden consultar, crear, editar y eliminar registros de cada modelo.
 
+### En la aplicación se cuenta con una carpeta llamada api-docs, donde se encuentra un archivo para importar en Postman con la documentación de todas las APIs.
+
+
 ## Requisitos previos
 1. Tener npm
    - Para comprobar usar el comando:  npm -v o npm --version
@@ -45,5 +48,7 @@ La aplicación permite realizar operaciones completas de CRUD (Crear, Leer, Actu
    Ubicado en el pryecto en la carpeta src ejecutar el comando
   
    node app.js
+
+
 
     
