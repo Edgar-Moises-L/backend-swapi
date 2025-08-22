@@ -32,8 +32,16 @@ class CharacterService {
         return await Character.paginate({}, options);
     }
 
-    async getListForCharacter() {
-        return await Character.find({}, "name");
+   async getByName(query) {
+        return await Character.find({ name: { $regex: query, $options: 'i' } })
+            .select(excludeFields)
+            .populate([
+                { path: 'films', select: "title" },
+                { path: 'homeworld', select: "name" },
+                { path: 'species', select: "name" },
+                { path: 'starships', select: "name" },
+                { path: 'vehicles', select: "name" }
+            ]);
     }
 
     async getById(id) {

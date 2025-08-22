@@ -1,0 +1,857 @@
+{
+	"info": {
+		"_postman_id": "d05d7652-63d7-453a-8cf7-d586b248645d",
+		"name": "Star Wars",
+		"description": "**Back-end: API REST de Star Wars**\n\nEste proyecto expone una API REST diseñada para gestionar información de personajes, películas, planetas, especies, naves espaciales y vehículos, incluyendo:\n\n**Gestión de entidades del universo Star Wars:**\n\n- **Películas:** Crear, editar, eliminar y listar películas con título, director y productor.\n    \n- **Planetas:** Crear, editar, eliminar y listar planetas con información detallada como clima, población, diámetro y más.\n    \n- **Especies:** Gestionar especies, incluyendo su planeta natal y características físicas.\n    \n- **Naves espaciales y vehículos:** Administrar naves y vehículos con sus especificaciones técnicas.\n    \n- **Personajes:** Crear y gestionar personajes con relaciones a películas, planetas, especies, naves y vehículos.\n    \n\nLa API permite operaciones CRUD completas: agregar, editar, borrar y consultar registros, incluyendo búsqueda por nombre para personajes y listas paginadas (10 elementos por página).\n\nOrganización de la colección\n\nStartFragment\n\n- `/films`\n    \n- `/planets`\n    \n- `/species`\n    \n- `/starships`\n    \n- `/vehicles`\n    \n- `/characters`\n    \n\n**Nota sobre la URL del servidor:**\n\nSi la variable global `{{URLl}}` no funciona correctamente, puedes modificar manualmente\n\n- Para puerto 3000: `http://localhost:3000/api`\n    \n- Para puerto 5100: `http://localhost:5100/api`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40855309"
+	},
+	"item": [
+		{
+			"name": "Films",
+			"item": [
+				{
+					"name": "Add film",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Star\",\r\n  \"director\": \"George Lucas\",\r\n  \"producer\": \"Gary Kurtz, Rick McCallum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/films",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"films"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/films?page=1&limit=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"films"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List for character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/films/list/for-character",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"films",
+								"list",
+								"for-character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/films/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"films",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update film",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Star\",\r\n  \"director\": \"George Lucas\",\r\n  \"producer\": \"Gary Kurtz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/films/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"films",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete film",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/films/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"films",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**CRUD de Films**: Implementación de operaciones para la gestión de películas, que incluye:\n\n- **Crear** una nueva película.\n    \n- **Obtener todas** las películas.\n    \n- **Obtener por ID** los detalles de una película específica.\n    \n- **Obtener ID y nombre** de todas las películas.\n    \n- **Actualizar** los datos de una película existente.\n    \n- **Eliminar** una película.\n    \n\n**Nota:** Reemplazar la variable `{{id}}` por el ID de la pelicula que se desea consultar, actualizar o eliminar."
+		},
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "Add vehicles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Sand\",\r\n  \"model\": \"Digger Crawler\",\r\n  \"vehicle_class\": \"Wheeled\",\r\n  \"length\": 36.8,\r\n  \"passengers\": 30,\r\n  \"max_atmosphering_speed\": 30,\r\n  \"cargo_capacity\": 50000,\r\n  \"consumables\": \"2 months\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/vehicles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/vehicles?page=1&limit=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List for character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/vehicles/list/for-character",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vehicles",
+								"list",
+								"for-character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/vehicles/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vehicles",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update vehicles",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Sand\",\r\n  \"model\": \"Digger Crawler\",\r\n  \"vehicle_class\": \"Wheeled\",\r\n  \"length\": 36.8,\r\n  \"passengers\": 30,\r\n  \"max_atmosphering_speed\": 30,\r\n  \"cargo_capacity\": 50000,\r\n  \"consumables\": \"2 months\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/vehicles/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vehicles",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete vehicles",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/vehicles/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vehicles",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**CRUD de Vehicles**: Implementación de operaciones para la gestión de vehículos, que incluye:\n\n- **Crear** un nuevo vehículo.\n    \n- **Obtener todas** los vehículos.\n    \n- **Obtener por ID** los detalles de un vehículo específico.\n    \n- **Obtener ID y nombre** de todos los vehículos.\n    \n- **Actualizar** los datos de un vehículo existente.\n    \n- **Eliminar** un vehículo.\n    \n\n**Nota:** Reemplazar la variable `{{id}}` por el ID del vehículo que se desea consultar, actualizar o eliminar."
+		},
+		{
+			"name": "Planets",
+			"item": [
+				{
+					"name": "Add planet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Teff\",\r\n  \"diameter\": 10465,\r\n  \"rotation_period\": 23,\r\n  \"orbital_period\": 304,\r\n  \"gravity\": \"1 standard\",\r\n  \"surface_water\": 1,\r\n  \"population\": 200000,\r\n  \"residents\": [\"\"], // Aquí debe ir el ID del los residents para relacionarlo correctamente\r\n  \"climate\": \"arid\",\r\n  \"terrain\": \"desert\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/planets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"planets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/planets?page=1&limit=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"planets"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List for character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/planets/list/for-character",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"planets",
+								"list",
+								"for-character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/planets/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"planets",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update planet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Teff\",\r\n  \"diameter\": 10465,\r\n  \"rotation_period\": 23,\r\n  \"orbital_period\": 304,\r\n  \"gravity\": \"1 standard\",\r\n  \"surface_water\": 1,\r\n  \"population\": 200000,\r\n  \"residents\": [\"\"], // Aquí debe ir el ID del los residents para relacionarlo correctamente\r\n  \"climate\": \"arid\",\r\n  \"terrain\": \"desert\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/planets/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"planets",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete planet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/planets/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"planets",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**CRUD de Planets**: Implementación de operaciones para la gestión de planetas, que incluye:\n\n- **Crear** un nuevo planeta.\n    \n- **Obtener todos** los planetas.\n    \n- **Obtener por ID** los detalles de un planeta específico.\n    \n- **Obtener ID y nombre** de todos los planetas.\n    \n- **Actualizar** los datos de un planeta existente.\n    \n- **Eliminar** un planeta.\n    \n\n**Nota:** Reemplazar la variable `{{id}}` por el ID del planeta que se desea consultar, actualizar o eliminar.\n\nEn el body del JSON, los campos que requieren un ID específico se señalan mediante un comentario para indicar que allí debe colocarse el ID correspondiente."
+		},
+		{
+			"name": "Characters",
+			"item": [
+				{
+					"name": "Add character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Luke\",\r\n  \"birth_year\": \"19BBY\",\r\n  \"eye_color\": \"blue\",\r\n  \"gender\": \"male\",\r\n  \"hair_color\": \"blond\",\r\n  \"height\": 172,\r\n  \"mass\": 77,\r\n  \"skin_color\": \"fair\",\r\n  \"films\": [\"\"],// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"homeworld\":[\"\"],// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"species\": [\"\"], // Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"starships\": [\"\"],// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"vehicles\":[\"\"] // Aquí debe ir el ID del campo para relacionarlo correctamente\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/characters",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/characters?page=1&limit=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/characters/search/{{nombre}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"characters",
+								"search",
+								"{{nombre}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/characters/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"characters",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update character",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Luke\",\r\n  \"birth_year\": \"19BBY\",\r\n  \"eye_color\": \"blue\",\r\n  \"gender\": \"male\",\r\n  \"hair_color\": \"blond\",\r\n  \"height\": 172,\r\n  \"mass\": 77,\r\n  \"skin_color\": \"fair\",\r\n  \"films\": [\"\"],// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"homeworld\":[\"\"], // Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"species\": [\"\"],// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"starships\": [\"\"],// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n  \"vehicles\":[\"\"] // Aquí debe ir el ID del campo para relacionarlo correctamente\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/characters/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"characters",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete character",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/characters/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"characters",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**CRUD de Characters**: Implementación de operaciones para la gestión de personajes, que incluye:\n\n- **Crear** un nuevo personaje.\n    \n- **Obtener todos** los personajes.\n    \n- **Obtener por ID** los detalles de un personaje específico.\n    \n- **Obtener por nombre** los detalles de un personaje específico.\n    \n- **Actualizar** los datos de un personaje existente.\n    \n- **Eliminar** un personaje.\n    \n\n**Nota:** Reemplazar la variable `{{id}}` por el ID del personaje que se desea consultar, actualizar o eliminar. Para la búsqueda por nombre, reemplazar `{{nombre}}` por el nombre del personaje que se desea consultar.\n\nEn el body del JSON, los campos que requieren un ID específico se señalan mediante un comentario para indicar que allí debe colocarse el ID correspondiente."
+		},
+		{
+			"name": "Species",
+			"item": [
+				{
+					"name": "Add species",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"hnjh\",\r\n  \"classification\": \"Mammal\",\r\n  \"designation\": \"Sentient\",\r\n  \"average_height\": 210,\r\n  \"average_lifespan\": 400,\r\n  \"eye_color\": \"Blue\",\r\n  \"hair_color\": \"Brown\",\r\n  \"skin_color\": \"Hairy\",\r\n  \"language\": \"Shyriiwook\",\r\n  \"homeworld\": \"\"// Aquí debe ir el ID del campo para relacionarlo correctamente\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/species",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"species"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/species?page=1&limit=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"species"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List for character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/species/list/for-character",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"species",
+								"list",
+								"for-character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/species/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"species",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update species",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n                \"name\": \"66666\",\r\n                \"classification\": \"Mammal\",\r\n                \"designation\": \"Sentient\",\r\n                \"average_height\": 210,\r\n                \"average_lifespan\": 400,\r\n                \"eye_color\": \"Blue\",\r\n                \"hair_color\": \"Brown\",\r\n                \"skin_color\": \"Hairy\",\r\n                \"language\": \"Shyriiwook\",\r\n                \"homeworld\": \"\" // Aquí debe ir el ID del campo para relacionarlo correctamente\r\n            }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/species/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"species",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete species",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/species/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"species",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**CRUD de Species**: Implementación de operaciones para la gestión de especies, que incluye:\n\n- **Crear** una nueva especie.\n    \n- **Obtener todas** las especies.\n    \n- **Obtener por ID** los detalles de una especie específica.\n    \n- **Obtener ID y nombre** de todas las especies.\n    \n- **Actualizar** los datos de una especie existente.\n    \n- **Eliminar** una especie.\n    \n\n**Nota:** Reemplazar la variable `{{id}}` por el ID de la especie que se desea consultar, actualizar o eliminar.\n\nEn el body del JSON, los campos que requieren un ID específico se señalan mediante un comentario para indicar que allí debe colocarse el ID correspondiente."
+		},
+		{
+			"name": "Starships",
+			"item": [
+				{
+					"name": "Add starships",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Millennium\",\r\n  \"model\": \"YT-1300 light freighter\",\r\n  \"starship_class\": \"Light freighter\",\r\n  \"length\": 34.75,\r\n  \"passengers\": 6,\r\n  \"max_atmosphering_speed\": 1050,\r\n  \"hyperdrive_rating\": 0.5,\r\n  \"MGLT\": 75,\r\n  \"cargo_capacity\": 100000,\r\n  \"consumables\": \"2 months\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/starships",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"starships"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/starships?page=1&limit=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"starships"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List for character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/starships/list/for-character",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"starships",
+								"list",
+								"for-character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/starships/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"starships",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update starships",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Millennium Falcon\",\r\n  \"model\": \"YT-1300 light freighter\",\r\n  \"starship_class\": \"Light freighter\",\r\n  \"length\": 34.75,\r\n  \"passengers\": 6,\r\n  \"max_atmosphering_speed\": 1050,\r\n  \"hyperdrive_rating\": 0.5,\r\n  \"MGLT\": 75,\r\n  \"cargo_capacity\": 100000,\r\n  \"consumables\": \"2 months\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/starships/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"starships",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete starships",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/starships/{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"starships",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**CRUD de Starships**: Implementación de operaciones para la gestión de naves espaciales, que incluye:\n\n- **Crear** una nueva nave espacial.\n    \n- **Obtener todas** las naves espaciales.\n    \n- **Obtener por ID** los detalles de una nave espacial específica.\n    \n- **Obtener ID y nombre** de todas las naves espaciales.\n    \n- **Actualizar** los datos de una nave espacial existente.\n    \n- **Eliminar** una nave espacial.\n    \n\n**Nota:** Reemplazar la variable `{{id}}` por el ID de la nave espacial que se desea consultar, actualizar o eliminar."
+		}
+	]
+}
