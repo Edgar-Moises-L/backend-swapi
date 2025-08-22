@@ -14,7 +14,8 @@ const characterSchema = new Schema({
     homeworld: { type: Schema.Types.ObjectId, ref: "Planet" }, 
     species: { type: Schema.Types.ObjectId, ref: "Species" }, 
     starships: [{ type: Schema.Types.ObjectId, ref: "Starship" }],
-    vehicles: [{ type: Schema.Types.ObjectId, ref: "Vehicle" }]
+    vehicles: [{ type: Schema.Types.ObjectId, ref: "Vehicle" }],
+    characterUrl: { type: String, select: false }
 }, { timestamps: true });
 
 

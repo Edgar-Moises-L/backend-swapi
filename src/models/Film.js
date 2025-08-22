@@ -6,7 +6,8 @@ const filmSchema = new Schema(
     {
         title: { type: String, required: true, unique: true },
         director: { type: String, required: true },
-        producer: { type: String, required: true }
+        producer: { type: String, required: true },
+        filmUrl: { type: String, select: false }
 
     }, { timestamps: true }
 );

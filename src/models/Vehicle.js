@@ -9,7 +9,8 @@ const vehicleSchema = new Schema({
     passengers: { type: Number },
     max_atmosphering_speed: { type: Number },
     cargo_capacity: { type: Number },
-    consumables: { type: String }
+    consumables: { type: String },
+    vehicleUrl: { type: String, select: false }
 }, { timestamps: true });
 
 vehicleSchema.plugin(mongoosePaginate);

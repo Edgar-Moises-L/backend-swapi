@@ -11,7 +11,8 @@ const speciesSchema = new Schema({
     hair_color: { type: String },
     skin_color: { type: String },
     language: { type: String },
-    homeworld: { type: Schema.Types.ObjectId, ref: "Planet"  }
+    homeworld: { type: Schema.Types.ObjectId, ref: "Planet"  },
+    speciesUrl: { type: String, select: false }
 }, { timestamps: true });
 
 speciesSchema.plugin(mongoosePaginate);

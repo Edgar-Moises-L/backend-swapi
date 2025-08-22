@@ -11,7 +11,8 @@ const planetSchema = new Schema({
     population: { type: Number },
     residents: [{ type: Schema.Types.ObjectId, ref: "Character" }],
     climate: { type: String },
-    terrain: { type: String }
+    terrain: { type: String },
+    planetUrl: { type: String, select: false }
 }, { timestamps: true });
 
 

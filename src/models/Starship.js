@@ -11,7 +11,8 @@ const starshipSchema = new Schema({
     hyperdrive_rating: { type: Number },
     MGLT: { type: Number },
     cargo_capacity: { type: Number },
-    consumables: { type: String }
+    consumables: { type: String },
+    starshipUrl: { type: String, select: false }
 }, { timestamps: true });
 
 starshipSchema.plugin(mongoosePaginate);
