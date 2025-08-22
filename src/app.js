@@ -7,12 +7,12 @@ import starshipRoute from './routes/starshipRoute.js';
 import vehicleRoute from './routes/vehicleRoute.js'
 import express from 'express';
 import dbClient from './config/dbClient.js'
+import { seedDatabase } from './scripts/dataSeeder.js';
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 app.use('/api/films', filmRoute);
 app.use('/api/characters', characterRoute);
@@ -21,14 +21,22 @@ app.use('/api/species', speciesRoute)
 app.use('/api/starships', starshipRoute)
 app.use('/api/vehicles', vehicleRoute)
 
-try {
+
+async function startServer() {
+  try {
+    await dbClient.connectDB(); 
+    await seedDatabase();   
+
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log('Servidor activo en el puerto ' + PORT));
-} catch (e) {
+  } catch (e) {
     console.log(e);
+  }
 }
+
+startServer();
 
 process.on('SIGINT', async () => {
     dbClient.closeConexion();
     process.exit(0);
-})
+});
