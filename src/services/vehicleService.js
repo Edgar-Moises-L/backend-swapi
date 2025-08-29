@@ -16,8 +16,11 @@ class vehicleService {
 
     }
 
-
-
+    async getByName(query) {
+        return await Vehicle.find({
+            name: { $regex: query, $options: 'i' }
+        }).select("-createdAt -updatedAt -__v");
+    }
 
 
     async getListForCharacter() {

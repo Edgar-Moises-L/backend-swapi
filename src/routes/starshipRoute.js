@@ -5,6 +5,7 @@ const route = Router();
 
 route.post('/', starshipController.create);
 route.get('/', starshipController.getAll);
+route.get('/search/:name', starshipController.getByName);
 route.get('/list/for-character', starshipController.getListForCharacter);
 route.get('/:id', starshipController.getById);
 route.put('/:id', starshipController.update);

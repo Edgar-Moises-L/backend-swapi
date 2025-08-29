@@ -22,6 +22,26 @@ class speciesController {
         }
     }
 
+    async getByName(req, res) {
+        try {
+            const { name } = req.params;
+            if (!name) {
+                return res.status(400).json({ message: "Se requiere el parámetro 'name'" });
+            }
+
+            const species = await speciesService.getByName(name);
+
+            if (!species.length) {
+                return res.status(404).json({ message: "No se encontraron especies" });
+            }
+
+            return res.json(species);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Error al buscar especies" });
+        }
+    }
+
     async getListForCharacter(req, res) {
         try {
             const data = await speciesService.getListForCharacter();

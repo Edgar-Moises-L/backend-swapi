@@ -21,7 +21,27 @@ class starshipController {
             res.status(500).send(e.message);
         }
     }
-    
+
+    async getByName(req, res) {
+        try {
+            const { name } = req.params;
+            if (!name) {
+                return res.status(400).json({ message: "Se requiere el parámetro 'name'" });
+            }
+
+            const starship = await starshipService.getByName(name);
+
+            if (!starship.length) {
+                return res.status(404).json({ message: "No se encontraron naves espaciales" });
+            }
+
+            return res.json(starship);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Error al buscar naves espaciales" });
+        }
+    }
+
     async getListForCharacter(req, res) {
         try {
             const data = await starshipService.getListForCharacter();

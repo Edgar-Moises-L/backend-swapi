@@ -20,6 +20,13 @@ class PlanetService {
         };
         return await Planet.paginate({}, options);
     }
+    async getByName(query) {
+        return await Planet.find({
+            name: { $regex: query, $options: 'i' } 
+        })
+        .select("-createdAt -updatedAt -__v -planetUrl")
+        .populate('residents', 'name');
+    }
 
     async getListForCharacter() {
         return await Planet.find({}, "name");

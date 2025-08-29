@@ -22,6 +22,26 @@ class planetController {
         }
     }
 
+    async getByName(req, res) {
+        try {
+            const { name } = req.params;
+            if (!name) {
+                return res.status(400).json({ message: "Se requiere el parámetro 'name'" });
+            }
+
+            const planet = await planetService.getByName(name);
+
+            if (!planet.length) {
+                return res.status(404).json({ message: "No se encontraron planetas" });
+            }
+
+            return res.json(planet);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Error al buscar planetas" });
+        }
+    }
+
     async getListForCharacter(req, res) {
         try {
             const data = await planetService.getListForCharacter();

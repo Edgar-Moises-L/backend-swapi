@@ -14,6 +14,12 @@ class filmService {
         return await Film.paginate({}, options);
     }
 
+    async getByTitle(query) {
+        return await Film.find({title: { $regex: query, $options: 'i' }
+        }).select("-createdAt -updatedAt -__v");
+    }
+
+
     async getListForCharacter() {
         return await Film.find({}, "title");
     }

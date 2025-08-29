@@ -22,6 +22,26 @@ class filmController {
         }
     }
 
+    async getByTitle(req, res) {
+        try {
+            const { title } = req.params;
+            if (!title) {
+                return res.status(400).json({ message: "Se requiere el parámetro 'title'" });
+            }
+
+            const film = await filmService.getByTitle(title);
+
+            if (!film.length) {
+                return res.status(404).json({ message: "No se encontraron la pelicula" });
+            }
+
+            return res.json(film);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Error al buscar la pelicula" });
+        }
+    }
+
     async getListForCharacter(req, res) {
         try {
             const data = await filmService.getListForCharacter();

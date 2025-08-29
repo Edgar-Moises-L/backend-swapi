@@ -5,6 +5,7 @@ const route = Router();
 
 route.post('/', planetController.create);
 route.get('/', planetController.getAll);
+route.get('/search/:name', planetController.getByName);
 route.get('/list/for-character', planetController.getListForCharacter);
 route.get('/:id', planetController.getById);
 route.put('/:id', planetController.update);

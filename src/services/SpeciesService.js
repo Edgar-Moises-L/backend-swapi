@@ -22,7 +22,14 @@ class SpeciesService {
         return await Species.paginate({}, options);
     }
 
-   
+    async getByName(query) {
+        return await Species.find({
+            name: { $regex: query, $options: 'i' }
+        })
+            .select("-createdAt -updatedAt -__v -speciesUrl")
+            .populate('homeworld', 'name');
+    }
+
     async getListForCharacter() {
         return await Species.find({}, "name");
     }

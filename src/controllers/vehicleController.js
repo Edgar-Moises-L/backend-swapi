@@ -21,7 +21,27 @@ class vehicleController {
             res.status(500).send(e.message);
         }
     }
-    
+
+    async getByName(req, res) {
+        try {
+            const { name } = req.params;
+            if (!name) {
+                return res.status(400).json({ message: "Se requiere el parámetro 'name'" });
+            }
+
+            const vehicle = await vehicleService.getByName(name);
+
+            if (!vehicle.length) {
+                return res.status(404).json({ message: "No se encontraron personajes" });
+            }
+
+            return res.json(vehicle);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Error al buscar personajes" });
+        }
+    }
+
     async getListForCharacter(req, res) {
         try {
             const data = await vehicleService.getListForCharacter();

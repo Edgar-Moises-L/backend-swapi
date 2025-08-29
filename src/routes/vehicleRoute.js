@@ -5,6 +5,7 @@ const route = Router();
 
 route.post('/', vehicleController.create);
 route.get('/', vehicleController.getAll);
+route.get('/search/:name', vehicleController.getByName);
 route.get('/list/for-character', vehicleController.getListForCharacter);
 route.get('/:id', vehicleController.getById);
 route.put('/:id', vehicleController.update);
