@@ -32,7 +32,7 @@ class filmController {
             const film = await filmService.getByTitle(title);
 
             if (!film.length) {
-                return res.status(404).json({ message: "No se encontraron la pelicula" });
+                return res.status(404).json({ message: "No se encontraron resultados" });
             }
 
             return res.json(film);

@@ -32,7 +32,7 @@ class vehicleController {
             const vehicle = await vehicleService.getByName(name);
 
             if (!vehicle.length) {
-                return res.status(404).json({ message: "No se encontraron personajes" });
+                return res.status(404).json({ message: "No se encontraron resultados" });
             }
 
             return res.json(vehicle);

@@ -32,7 +32,7 @@ class planetController {
             const planet = await planetService.getByName(name);
 
             if (!planet.length) {
-                return res.status(404).json({ message: "No se encontraron planetas" });
+                return res.status(404).json({ message: "No se encontraron resultados" });
             }
 
             return res.json(planet);

@@ -32,7 +32,7 @@ class starshipController {
             const starship = await starshipService.getByName(name);
 
             if (!starship.length) {
-                return res.status(404).json({ message: "No se encontraron naves espaciales" });
+                return res.status(404).json({ message: "No se encontraron resultados" });
             }
 
             return res.json(starship);

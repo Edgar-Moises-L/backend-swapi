@@ -32,7 +32,7 @@ class speciesController {
             const species = await speciesService.getByName(name);
 
             if (!species.length) {
-                return res.status(404).json({ message: "No se encontraron especies" });
+                return res.status(404).json({ message: "No se encontraron resultados" });
             }
 
             return res.json(species);

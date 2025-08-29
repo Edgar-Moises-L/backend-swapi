@@ -24,15 +24,15 @@ class characterController {
 
     async getByName(req, res) {
         try {
-            const { name } = req.params; 
+            const { name } = req.params;
             if (!name) {
                 return res.status(400).json({ message: "Se requiere el parámetro 'name'" });
             }
 
             const characters = await characterService.getByName(name);
-            
+
             if (!characters.length) {
-                return res.status(404).json({ message: "No se encontraron personajes" });
+                return res.status(404).json({ message: "No se encontraron resultados" });
             }
 
             return res.json(characters);
@@ -64,7 +64,7 @@ class characterController {
         }
     }
 
- async delete(req, res) {
+    async delete(req, res) {
         try {
             const { id } = req.params;
             const deletedCharacter = await characterService.delete(id);
