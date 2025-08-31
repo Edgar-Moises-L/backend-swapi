@@ -32,7 +32,7 @@ class vehicleService {
     }
 
     async update(id, vehicle) {
-        return await Vehicle.findOneAndUpdate(id, vehicle, { new: true });
+        return await Vehicle.findByIdAndUpdate(id, vehicle, { new: true });
     }
 
     async delete(id) {

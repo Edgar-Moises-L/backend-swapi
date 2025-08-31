@@ -29,7 +29,7 @@ class starshipService {
     }
 
     async update(id, starship) {
-        return await Starship.findOneAndUpdate(id, starship, { new: true });
+        return await Starship.findByIdAndUpdate(id, starship, { new: true });
     }
 
     async delete(id) {
