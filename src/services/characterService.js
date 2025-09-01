@@ -8,11 +8,11 @@ class CharacterService {
         return await Character.findById(newCharacter._id)
             .select(excludeFields)
             .populate([
-                { path: 'films', select:  "title" },
-                { path: 'homeworld', select:  "name" },
-                { path: 'species', select:  "name" },
-                { path: 'starships', select:  "name" },
-                { path: 'vehicles', select:  "name" }
+                { path: 'films', select: "title" },
+                { path: 'homeworld', select: "name" },
+                { path: 'species', select: "name" },
+                { path: 'starships', select: "name" },
+                { path: 'vehicles', select: "name" }
             ]);
     }
 
@@ -22,17 +22,17 @@ class CharacterService {
             limit,
             select: excludeFields,
             populate: [
-                { path: 'films', select:  "title" },
-                { path: 'homeworld', select:  "name" },
-                { path: 'species', select:  "name" },
-                { path: 'starships', select:  "name" },
-                { path: 'vehicles', select:  "name" }
+                { path: 'films', select: "title" },
+                { path: 'homeworld', select: "name" },
+                { path: 'species', select: "name" },
+                { path: 'starships', select: "name" },
+                { path: 'vehicles', select: "name" }
             ]
         };
         return await Character.paginate({}, options);
     }
 
-   async getByName(query) {
+    async getByName(query) {
         return await Character.find({ name: { $regex: query, $options: 'i' } })
             .select(excludeFields)
             .populate([
@@ -44,15 +44,19 @@ class CharacterService {
             ]);
     }
 
+    async getList() {
+        return await Character.find({}, "name");
+    }
+
     async getById(id) {
         return await Character.findById(id)
             .select(excludeFields)
             .populate([
-                { path: 'films', select:  "title" },
-                { path: 'homeworld', select:  "name" },
-                { path: 'species', select:  "name" },
-                { path: 'starships', select:  "name" },
-                { path: 'vehicles', select:  "name" }
+                { path: 'films', select: "title" },
+                { path: 'homeworld', select: "name" },
+                { path: 'species', select: "name" },
+                { path: 'starships', select: "name" },
+                { path: 'vehicles', select: "name" }
             ]);
     }
 
@@ -60,11 +64,11 @@ class CharacterService {
         return await Character.findByIdAndUpdate(id, character, { new: true })
             .select(excludeFields)
             .populate([
-                { path: 'films', select:  "title" },
-                { path: 'homeworld', select:  "name" },
-                { path: 'species', select:  "name" },
-                { path: 'starships', select:  "name" },
-                { path: 'vehicles', select:  "name" }
+                { path: 'films', select: "title" },
+                { path: 'homeworld', select: "name" },
+                { path: 'species', select: "name" },
+                { path: 'starships', select: "name" },
+                { path: 'vehicles', select: "name" }
             ]);
     }
 

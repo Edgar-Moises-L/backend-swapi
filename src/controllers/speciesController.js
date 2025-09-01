@@ -22,6 +22,7 @@ class speciesController {
         }
     }
 
+
     async getByName(req, res) {
         try {
             const { name } = req.params;
@@ -41,6 +42,8 @@ class speciesController {
             return res.status(500).json({ message: "Error al buscar especies" });
         }
     }
+
+
 
     async getListForCharacter(req, res) {
         try {

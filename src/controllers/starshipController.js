@@ -22,7 +22,7 @@ class starshipController {
         }
     }
 
-    async getByName(req, res) {
+        async getByName(req, res) {
         try {
             const { name } = req.params;
             if (!name) {
@@ -41,6 +41,7 @@ class starshipController {
             return res.status(500).json({ message: "Error al buscar naves espaciales" });
         }
     }
+
 
     async getListForCharacter(req, res) {
         try {

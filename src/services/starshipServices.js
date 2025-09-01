@@ -14,11 +14,15 @@ class starshipService {
         return await Starship.paginate({}, options);
     }
 
-    
-      async getByName(query) {
-            return await Starship.find({name: { $regex: query, $options: 'i' }
-            }).select("-createdAt -updatedAt -__v");
-        }
+
+
+    async getByName(query) {
+        return await Starship.find({
+            name: { $regex: query, $options: 'i' }
+        }).select("-createdAt -updatedAt -__v");
+    }
+
+
 
     async getListForCharacter() {
         return await Starship.find({}, "name");

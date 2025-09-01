@@ -42,6 +42,7 @@ class filmController {
         }
     }
 
+
     async getListForCharacter(req, res) {
         try {
             const data = await filmService.getListForCharacter();

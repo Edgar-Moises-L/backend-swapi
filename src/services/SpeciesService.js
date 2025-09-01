@@ -30,6 +30,7 @@ class SpeciesService {
             .populate('homeworld', 'name');
     }
 
+ 
     async getListForCharacter() {
         return await Species.find({}, "name");
     }

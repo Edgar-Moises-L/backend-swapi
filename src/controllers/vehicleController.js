@@ -42,6 +42,7 @@ class vehicleController {
         }
     }
 
+
     async getListForCharacter(req, res) {
         try {
             const data = await vehicleService.getListForCharacter();

@@ -22,7 +22,7 @@ class planetController {
         }
     }
 
-    async getByName(req, res) {
+       async getByName(req, res) {
         try {
             const { name } = req.params;
             if (!name) {

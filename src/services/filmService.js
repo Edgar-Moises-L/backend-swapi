@@ -15,9 +15,11 @@ class filmService {
     }
 
     async getByTitle(query) {
-        return await Film.find({title: { $regex: query, $options: 'i' }
+        return await Film.find({
+            title: { $regex: query, $options: 'i' }
         }).select("-createdAt -updatedAt -__v");
     }
+
 
 
     async getListForCharacter() {
